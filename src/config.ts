@@ -10,9 +10,6 @@ export const config = {
   /** URL de embed do VSL (YouTube, Vimeo, Panda). */
   vslEmbedUrl: null as string | null,
 
-  /** Logo oficial MB (arquivo da Mari, nunca recriado nem recortado de print). Ex.: "/logo-mb.svg". */
-  logoUrl: null as string | null,
-
   /** Preço de hoje, ex.: "R$ 197". */
   precoHoje: null as string | null,
 
@@ -23,18 +20,21 @@ export const config = {
   tempoDeAcesso: null as string | null,
 
   /**
-   * Valor de cada item da dobra 6. A copy traz sugestões entre colchetes
-   * (R$ 297, 47, 37, 47, 37, 27, total 492), ainda não aprovadas.
+   * Valor de cada item da dobra 6, em reais (valores da copy). O calendário de vacinas
+   * subiu de R$ 27 para R$ 32 para a soma bater com o valor oficial (Marcelo, 02/11/2026).
+   * O total não é digitado: é a soma dos itens.
    */
   valores: {
-    aulas: null as string | null,
-    listaDeCompras: null as string | null,
-    guiaDeBrinquedos: null as string | null,
-    aulaExtra: null as string | null,
-    planner: null as string | null,
-    calendarioVacinas: null as string | null,
-    total: null as string | null,
+    aulas: 297,
+    listaDeCompras: 47,
+    guiaDeBrinquedos: 37,
+    aulaExtra: 47,
+    planner: 37,
+    calendarioVacinas: 32,
   },
+
+  /** Valor oficial riscado na dobra 7, em reais. Tem que ser igual à soma dos itens. */
+  valorOficial: 497,
 };
 
 /** Contato: um texto para exibir e o link de destino. */

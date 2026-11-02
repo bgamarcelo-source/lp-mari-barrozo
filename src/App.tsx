@@ -118,15 +118,17 @@ function Botao({ children, tom = "verde" }: { children: ReactNode; tom?: "verde"
   );
 }
 
-/** `nome` aparece no buraco; `rotulo` (opcional) diz qual valor falta para leitor de tela e para o data-pendente. */
-function Valor({ valor, nome, rotulo }: { valor: string | null; nome: string; rotulo?: string }) {
-  if (valor) return <span className="font-semibold whitespace-nowrap tabular-nums">{valor}</span>;
-  return <Pendente variante="inline" titulo={nome} rotulo={rotulo} />;
+const reais = (valor: number) => `R$ ${valor.toLocaleString("pt-BR")}`;
+
+/** Soma dos itens da dobra 6: o total nunca é digitado à mão. */
+const valorTotal = Object.values(config.valores).reduce((soma, v) => soma + v, 0);
+
+if (valorTotal !== config.valorOficial) {
+  console.warn(`Soma dos itens (${reais(valorTotal)}) diferente do valor oficial (${reais(config.valorOficial)}).`);
 }
 
-function Logo({ className = "" }: { className?: string }) {
-  if (config.logoUrl) return <img src={config.logoUrl} alt="Logo Mari Barrozo" className={`h-12 w-auto ${className}`} />;
-  return <Pendente variante="inline" titulo="Logo MB oficial" className={className} />;
+function Valor({ valor }: { valor: number }) {
+  return <span className="font-semibold whitespace-nowrap text-tinta tabular-nums">{reais(valor)}</span>;
 }
 
 function Assinatura({ tamanho = "base" }: { tamanho?: "base" | "grande" }) {
@@ -151,10 +153,7 @@ export default function App() {
     <div className="overflow-x-clip">
       <header className="sobre-verde bg-verde-fundo">
         <Container className="flex min-h-18 flex-wrap items-center justify-between gap-x-6 gap-y-3 py-4">
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-            <Logo />
-            <Assinatura />
-          </div>
+          <Assinatura />
           <a href={marca.whatsapp.url} className={`text-sm ${LINK_DOURADO}`}>
             WhatsApp {marca.whatsapp.texto}
           </a>
@@ -353,7 +352,7 @@ export default function App() {
                       </p>
                     </td>
                     <td className="py-6 text-right">
-                      <Valor valor={config.valores.aulas} nome="Valor" rotulo="Valor das aulas" />
+                      <Valor valor={config.valores.aulas} />
                     </td>
                   </tr>
                   {bonus.map((item) => (
@@ -365,7 +364,7 @@ export default function App() {
                         <span className="text-tinta">{item.nome}</span>
                       </td>
                       <td className="py-4 text-right">
-                        <Valor valor={item.valor} nome="Valor" rotulo={`Valor do bônus ${item.nome}`} />
+                        <Valor valor={item.valor} />
                       </td>
                     </tr>
                   ))}
@@ -376,7 +375,7 @@ export default function App() {
                       Valor total
                     </th>
                     <td className="pt-5 text-right">
-                      <Valor valor={config.valores.total} nome="Total" rotulo="Valor total" />
+                      <Valor valor={valorTotal} />
                     </td>
                   </tr>
                 </tfoot>
@@ -390,7 +389,7 @@ export default function App() {
           <Container className="max-w-4xl">
             <div className="rounded-[2rem] border border-linha bg-creme px-5 py-10 sm:px-12 sm:py-14">
               <p className="text-lg text-tinta-suave">
-                Valor oficial: <s className="decoration-2">R$ 497</s>
+                Valor oficial: <s className="decoration-2">{reais(config.valorOficial)}</s>
               </p>
               <p className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-2 font-display text-4xl font-semibold text-verde sm:text-5xl">
                 <span>Hoje:</span>
@@ -467,11 +466,7 @@ export default function App() {
         <Container>
           <div className="grid gap-10 md:grid-cols-12">
             <div className="md:col-span-5">
-              <div className="flex flex-col items-start gap-4">
-                {/* O buraco do logo aparece só no topo; aqui o logo entra quando existir. */}
-                {config.logoUrl && <Logo />}
-                <Assinatura tamanho="grande" />
-              </div>
+              <Assinatura tamanho="grande" />
               <p className="mt-5 text-creme/80">{marca.credencial}</p>
             </div>
             <ul className="space-y-2 text-creme/85 md:col-span-4">

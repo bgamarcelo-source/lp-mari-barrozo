@@ -19,17 +19,16 @@ Quase tudo se resolve em `src/config.ts`: preencheu o valor, o buraco some.
 
 | Buraco | Onde preencher |
 |---|---|
-| Logo MB oficial (topo; no rodapé entra sozinho) | `config.logoUrl`, com o arquivo oficial em `public/`. Nunca recriar nem recortar de print |
 | VSL | `config.vslEmbedUrl` |
 | Mockup do pacote (dobra 6) | trocar o `<Pendente>` da dobra 6 em `src/App.tsx` |
 | Preço de hoje e parcelas (dobra 7) | `config.precoHoje`, `config.parcelas` |
-| Valores das aulas, dos 5 bônus e do total (dobra 6) | `config.valores` |
 | Tempo de acesso (dúvidas) | `config.tempoDeAcesso` |
 | Link do checkout (3 botões) | `config.checkoutUrl` |
 | GTM e pixel Meta | comentários `PENDENTE` no `index.html` |
 
-Atenção na copy: o "Valor oficial" riscado está como R$ 497 (sem colchete, então foi mantido),
-mas a soma sugerida dos itens dá R$ 492. Confirmar com a Mari.
+Valores da dobra 6: os da copy, em `config.valores`. O calendário de vacinas foi de R$ 27 para R$ 32
+para a soma bater com o valor oficial de R$ 497 (`config.valorOficial`). O total é a soma dos itens,
+calculada no código, e a página avisa no console se ele divergir do valor oficial.
 
 ## Marca
 
@@ -40,7 +39,7 @@ e os 3 serviços. O número do WhatsApp e o usuário do Instagram são escritos 
 Cores do flyer: verde `#203923` (fundo escuro `#182f1b`) e o dourado do logo MB (`#e3c07f`) como acento.
 Tokens em `src/index.css`. Classe `sobre-verde` marca as áreas de fundo verde (anel de foco dourado).
 
-Logo: o arquivo oficial ainda não está na pasta. O topo mostra o buraco PENDENTE e o nome em texto.
+Logo: a Mari não tem e não vai ter logo. A marca é só o nome em texto. O selo de 7 dias é tipográfico.
 
 ## Fotos
 
