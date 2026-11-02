@@ -10,6 +10,9 @@ export const config = {
   /** URL de embed do VSL (YouTube, Vimeo, Panda). */
   vslEmbedUrl: null as string | null,
 
+  /** Logo oficial MB (arquivo da Mari, nunca recriado nem recortado de print). Ex.: "/logo-mb.svg". */
+  logoUrl: null as string | null,
+
   /** Preço de hoje, ex.: "R$ 197". */
   precoHoje: null as string | null,
 
@@ -32,4 +35,32 @@ export const config = {
     calendarioVacinas: null as string | null,
     total: null as string | null,
   },
+};
+
+/** Contato: um texto para exibir e o link de destino. */
+export type Contato = { texto: string; url: string };
+
+/** DDD + número, só dígitos. Único lugar onde o WhatsApp é escrito. */
+const whatsappDigitos = "43998136388";
+/** Usuário do Instagram, sem @. */
+const instagramUsuario = "maribarrozo.pet";
+
+/** Dados do flyer oficial da Mari (aprovados pelo Marcelo em 02/11/2026). */
+export const marca = {
+  nome: "Mari Barrozo",
+  assinatura: "Pet Concierge",
+  credencial: "Mais de 25 anos de dedicação em Londrina",
+  servicos: [
+    "Visitas presenciais (pet sitter)",
+    "Hospedagem familiar selecionada",
+    "Relatórios diários com fotos e vídeos",
+  ],
+  whatsapp: {
+    texto: `(${whatsappDigitos.slice(0, 2)}) ${whatsappDigitos.slice(2, 7)}-${whatsappDigitos.slice(7)}`,
+    url: `https://wa.me/55${whatsappDigitos}`,
+  } satisfies Contato,
+  instagram: {
+    texto: `@${instagramUsuario}`,
+    url: `https://www.instagram.com/${instagramUsuario}/`,
+  } satisfies Contato,
 };

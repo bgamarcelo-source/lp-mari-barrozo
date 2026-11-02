@@ -1,29 +1,53 @@
 @import "tailwindcss";
 
+/* Cores tiradas do flyer oficial da Mari: verde #203923 (variações #182f1b a #213a24)
+   e o dourado do logo MB. Creme do miolo do flyer. */
 @theme {
-  --color-creme: #fbf6ef;
-  --color-areia: #f3e7d7;
-  --color-areia-escura: #e6d3bb;
-  --color-caramelo: #c4823f;
-  --color-caramelo-escuro: #9a5a24;
-  --color-cacau: #3b2a20;
-  --color-cacau-suave: #6b5446;
-  --color-folha: #5d6b4a;
+  --color-verde: #203923;
+  --color-verde-fundo: #182f1b;
+  --color-verde-claro: #2c4a30;
+  --color-dourado: #e3c07f;
+  --color-dourado-claro: #f0d9ac;
+  --color-dourado-texto: #7a5a22;
+  --color-creme: #f6efe1;
+  --color-papel: #ece2cd;
+  --color-linha: #d9cbb0;
+  --color-tinta: #1d2a1f;
+  --color-tinta-suave: #4c5a4d;
   --color-pendente: #b45309;
-  --font-display: "Fraunces", Georgia, serif;
+  --font-display: "EB Garamond", Georgia, serif;
   --font-sans: "Figtree", system-ui, sans-serif;
 }
 
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  accent-color: var(--color-verde);
 }
 
 body {
   background: var(--color-creme);
-  color: var(--color-cacau);
+  color: var(--color-tinta);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-dourado);
+  color: var(--color-verde-fundo);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-dourado-texto);
+  outline-offset: 3px;
+}
+
+.sobre-verde :focus-visible {
+  outline-color: var(--color-dourado);
+}
+
+a {
+  text-underline-offset: 0.2em;
 }
 
 @media (prefers-reduced-motion: reduce) {
