@@ -22,7 +22,6 @@ import fotoShihTzu from "./assets/fotos/mari-shihtzu.webp";
 /* Ordem da grade da dobra 3 (o porquê de cada uma está no README). */
 const grade = [
   { src: fotoAussie, alt: "Mari abraçando um filhote de pastor australiano em casa" },
-  { src: fotoBernese, alt: "Mari sorrindo com um filhote de bernese ao ar livre" },
   { src: fotoLulu, alt: "Mari com um lulu da pomerânia no colo" },
   { src: fotoTom, alt: "Mari dando um beijo no Tom, um cocker preto e branco" },
   { src: fotoShihTzu, alt: "Mari com um shih tzu enfeitado para festa" },
@@ -121,10 +120,13 @@ export default function App() {
         {/* DOBRA 2 · O muro */}
         <section className="py-16 sm:py-24">
           <Container className="grid items-center gap-10 md:grid-cols-2 md:gap-14">
-            <Pendente
-              titulo="Foto da Mari com um dos primeiros cachorros"
-              detalhe="Foto antiga, de preferência da infância ou da labradora. Vertical 4:5."
-              className="aspect-[4/5] w-full"
+            <img
+              src={fotoBernese}
+              alt="Mari sorrindo com um dos seus primeiros cachorros, um filhote de bernese"
+              loading="lazy"
+              className="aspect-[4/5] w-full rounded-3xl object-cover object-[50%_35%] shadow-[0_24px_60px_-30px_rgba(59,42,32,0.55)]"
+              width={900}
+              height={1350}
             />
             <div>
               <h2 className="font-display text-3xl leading-tight font-semibold text-balance sm:text-4xl">
@@ -148,16 +150,14 @@ export default function App() {
         {/* DOBRA 3 · A epifania */}
         <section className="bg-areia py-16 sm:py-24">
           <Container>
-            <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-5">
-              {grade.map((foto, i) => (
+            <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4">
+              {grade.map((foto) => (
                 <img
                   key={foto.alt}
                   src={foto.src}
                   alt={foto.alt}
                   loading="lazy"
-                  className={`w-full rounded-2xl object-cover object-[50%_30%] ${
-                    i === 0 ? "col-span-2 aspect-[4/3] md:col-span-1 md:aspect-[3/4]" : "aspect-[4/5] md:aspect-[3/4]"
-                  }`}
+                  className="aspect-[4/5] w-full rounded-2xl object-cover object-[50%_30%] md:aspect-[3/4]"
                 />
               ))}
             </div>
