@@ -8,7 +8,7 @@ export const config = {
   checkoutUrl: null as string | null,
 
   /** URL de embed do VSL (YouTube, Vimeo, Panda). */
-  vslEmbedUrl: null as string | null,
+  vslEmbedUrl: "https://drive.google.com/file/d/1xssrrsOLdhUjjE0gxlcn8479kjdd9m1u/preview" as string | null,
 
   /** Preço de hoje, ex.: "R$ 197". */
   precoHoje: null as string | null,
